@@ -1,0 +1,64 @@
+drop database if exists awesome;
+
+create database awesome CHARACTER SET utf8;
+
+use awesome;
+
+grant all on awesome.* to 'www-data'@'localhost' identified by 'www-data';
+
+create table users
+(
+    `id` varchar(50) not null,
+    `name` varchar(50) not null,
+    `email` varchar(50) not null,
+    `password` varchar(50) not null,
+    `admin` boolean not null,
+    primary key (`id`)
+) charset=utf8;
+
+create table tour_group
+(
+    `user_id` varchar(50) not null,
+    `user_name` varchar(50) not null,
+    `plan` varchar(50) not null,
+    `room` varchar(50) not null,
+    `transport` varchar(50) not null,
+    primary key (`user_id`)
+) charset=utf8;
+
+create table plans
+(
+    `id` varchar(50) not null,
+    `name` varchar(50) not null,
+    `content` mediumtext not null,
+    `maximum` varchar(10) not null,
+    primary key (`id`)
+) charset=utf8;
+
+
+create table rooms
+(
+    `number` varchar(50) not null,
+    `type` varchar(50) not null,
+    `user_id` varchar(50),
+    `user` varchar(50),
+    primary key (`number`)
+) charset=utf8;
+
+create table travels
+(
+    `id` varchar(50) not null,
+    `user_id` varchar(50) not null,
+    `user_name` varchar(50) not null,
+    `name` varchar(50) not null,
+    `summary` text not null,
+    `content` mediumtext not null,
+    primary key (`id`)
+) charset=utf8;
+
+
+
+
+
+
+
